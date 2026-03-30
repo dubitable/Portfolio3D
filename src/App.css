@@ -1,0 +1,70 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#text {
+    position: absolute;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+section {
+    height: 100vh;
+    width: 100vw;
+    outline: blue 2px solid;
+    scroll-snap-align: start;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.panel {
+    width: 50vw;
+    box-sizing: border-box;
+    padding: 5%;
+}
+
+.panel>div {
+    width: 100%;
+    height: 100%;
+}
+
+.show {
+    outline: red solid 2px;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .panel {
+        width: 100vw;
+        height: 50vh;
+        padding: 5%;
+    }
+
+    .panel-text {
+        order: 2;
+    }
+
+    .panel-empty {
+        order: 1;
+    }
+}
