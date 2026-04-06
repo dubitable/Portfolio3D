@@ -12,7 +12,7 @@ function Computer({ scroll }: { scroll: Scroll }) {
     const { nodes, materials } = useGLTF(path);
     const ref = useRef<Group>(null!);
 
-    const { position, rotation } = useLocation("right", [Math.PI, 0, Math.PI]);
+    const { position, rotation, scale } = useLocation("right", [Math.PI, 0, Math.PI]);
 
     useFrame(({ clock }) => {
         if (!ref.current) return;
@@ -20,14 +20,16 @@ function Computer({ scroll }: { scroll: Scroll }) {
         ref.current.position.y = position[1] + 0.05 * Math.sin(2 * clock.getElapsedTime());
         ref.current.rotation.y = rotation[1] + 0.1 * Math.sin(clock.getElapsedTime());
 
-        ref.current.rotation.x = rotation[0] + Math.min(scroll.progress, 0.2) * 10;
-        ref.current.position.x = position[0] + Math.min(scroll.progress, 0.2) * 20;
+
+        const t = Math.min(scroll.progress, 0.2);
+        ref.current.rotation.x = rotation[0] + t * 10;
+        ref.current.position.x = position[0] + t * 20;
     })
 
 
     return (
         <>
-            <group dispose={null} position={position} rotation={rotation} scale={2.4} ref={ref}>
+            <group dispose={null} position={position} rotation={rotation} scale={2.4 * scale} ref={ref}>
                 <group>
                     <mesh geometry={(nodes.mesh1262710399 as Mesh).geometry} material={materials.mat17} />
                     <mesh geometry={(nodes.mesh1262710399_1 as Mesh).geometry} material={materials.mat21} />

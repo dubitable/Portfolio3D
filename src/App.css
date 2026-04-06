@@ -18,12 +18,12 @@ body {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 
 section {
     height: 100vh;
     width: 100vw;
-    outline: blue 2px solid;
     scroll-snap-align: start;
 }
 
@@ -48,6 +48,11 @@ section {
     outline: red solid 2px;
 }
 
+.panel-empty {
+    display: flex;
+    justify-content: flex-end;
+}
+
 
 @media (max-width: 768px) {
     .container {
@@ -56,15 +61,16 @@ section {
 
     .panel {
         width: 100vw;
-        height: 50vh;
         padding: 5%;
     }
 
     .panel-text {
         order: 2;
+        height: 70vh;
     }
 
     .panel-empty {
         order: 1;
+        height: 30vh;
     }
 }

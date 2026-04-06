@@ -7,12 +7,12 @@ import type { Scroll } from "../hooks/scroll";
 
 const path = "/models/sign.glb";
 
-// Hammer by J-Toastie [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/66FnMJl5fs)
+// Arrow signs by hat_my_guy (https://poly.pizza/m/ZaBVh3kaEy)
 function Sign({ scroll }: { scroll: Scroll }) {
   const { nodes, materials } = useGLTF(path);
   const ref = useRef<Group>(null!);
 
-  const { position, rotation } = useLocation("left", [-Math.PI * 0.5, 0, 0], 0.1);
+  const { position, rotation, scale } = useLocation("right", [-Math.PI * 0.5, 0, Math.PI * 0.5], 0.1);
 
   useFrame(({ clock }) => {
     if (!ref.current) return;
@@ -22,12 +22,12 @@ function Sign({ scroll }: { scroll: Scroll }) {
 
     const t = Math.min(Math.abs(scroll.progress - 1), 1);
     ref.current.rotation.z = rotation[2] + t * 10;
-    ref.current.position.x = position[0] - t * 20;
+    ref.current.position.x = position[0] + t * 20;
   })
 
   return (
     <>
-      <group dispose={null} ref={ref} position={position} rotation={rotation} scale={20}>
+      <group dispose={null} ref={ref} position={position} rotation={rotation} scale={20 * scale}>
         <group>
           <mesh geometry={(nodes.Cylinder_1 as Mesh).geometry} material={materials['Material.001']} />
           <mesh geometry={(nodes.Cylinder_2 as Mesh).geometry} material={materials['Material.002']} />
