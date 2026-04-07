@@ -11,6 +11,7 @@
     overflow: scroll;
 }
 
+
 .card-header {
     display: flex;
     align-items: center;
@@ -67,10 +68,6 @@
     transition: border 0.2s;
 }
 
-.element:hover {
-    border-color: #db2777;
-}
-
 .element p {
     font-size: 14px;
     color: #d1d5db;
@@ -81,6 +78,32 @@
     font-size: 10px;
     font-style: italic;
     margin-top: 0;
+}
+
+@media (min-width: 768px) {
+    .element:hover {
+        border-color: #db2777;
+    }
+}
+
+@media (max-width: 768px) {
+    .element p {
+        font-size: 12px;
+    }
+
+    strong {
+       font-size: 14px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .avatar {
+        height: 40px;
+        width: 40px;
+    }
+    
 }
 
 a {

@@ -1,24 +1,29 @@
-html,
-body {
+html, body {
+    min-height: 100vh;
+    min-width: 100vw;
     margin: 0;
-    height: 100%;
-    overflow: hidden;
+}
+
+#site {
+    width: 100vw;
+    min-height: 100vh;
 }
 
 #canvas {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    inset: 0;
     height: 100%;
+    width: 100%;
 }
 
 #text {
     position: absolute;
     height: 100vh;
     overflow-y: scroll;
+    width: 100vw;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
 section {
@@ -29,8 +34,8 @@ section {
 
 .container {
     display: flex;
-    width: 100%;
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
 }
 
 .panel {
@@ -55,22 +60,30 @@ section {
 
 
 @media (max-width: 768px) {
+    .info {
+        display: none;
+    }
+
     .container {
         flex-direction: column;
     }
 
     .panel {
         width: 100vw;
-        padding: 5%;
+        padding: 0%;
     }
 
     .panel-text {
         order: 2;
-        height: 70vh;
+        height: 100%;
+
+        margin-top: 5%;
+        margin-bottom: 20%;
+        padding-left: 5%;
+        padding-right: 5%;
     }
 
     .panel-empty {
-        order: 1;
-        height: 30vh;
+        display: none;
     }
 }

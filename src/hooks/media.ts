@@ -15,8 +15,7 @@ export function useMediaQuery(query: string): boolean {
         const listener = (e: MediaQueryListEvent) => {
             setMatches(e.matches);
         };
-
-        // Set initial value (important for some browsers)
+        
         setMatches(media.matches);
 
         media.addEventListener('change', listener);

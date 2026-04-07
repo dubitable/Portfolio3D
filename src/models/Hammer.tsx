@@ -39,6 +39,6 @@ function Hammer({ scroll }: { scroll: Scroll }) {
   )
 }
 
-useGLTF.preload(path);
+// useGLTF.preload(path);
 
 export default Hammer;

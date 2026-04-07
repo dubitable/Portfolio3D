@@ -44,6 +44,6 @@ function Computer({ scroll }: { scroll: Scroll }) {
     )
 }
 
-useGLTF.preload('/computer.glb')
+// useGLTF.preload('/computer.glb')
 
 export default Computer;

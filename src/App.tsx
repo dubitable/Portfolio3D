@@ -13,6 +13,7 @@ import Hammer from './models/Hammer';
 import Sign from './models/Sign';
 import Card from './components/Card';
 import Info from './components/Info';
+import { useMediaQuery } from './hooks/media';
 
 
 function Background() {
@@ -31,10 +32,13 @@ function App() {
   const textRef = useRef<HTMLDivElement>(null!);
   const scroll = useScroll(textRef);
 
+
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
-    <>
-      <div id="canvas">
-        <Canvas
+    <div id ="site">
+      {<div id="canvas">
+        {isMobile ? (null) : (<Canvas
           camera={{ fov: 75, near: 0.1, far: 1000, position: [0, 0, 2] }}
           gl={{
             outputColorSpace: THREE.LinearSRGBColorSpace,
@@ -52,8 +56,11 @@ function App() {
 
           <Stars />
 
-        </Canvas>
+        </Canvas>)}
+
       </div>
+      }
+
       <div id="text" ref={textRef}>
 
         <section>
@@ -70,12 +77,12 @@ function App() {
                 },
                 {
                   name: "Website Details",
-                  content: "This site stemmed out of my fiddling with Three JS (and is inspired by Fireship's video on the topic). It's written in React, Typescript, React Three Fiber, and hosted on Vercel - the full source code can be found on my Github, along with its 2D predecessor. Models are sourced from [poly.pizza](poly.pizza), and their individual attribution can be found in the info section at the top right. Keep scrolling for more!"
+                  content: "This site stemmed out of my fiddling with Three JS (and is inspired by Fireship's video on the topic). Note that all 3D stuff is disabled on mobile (for performance reasons). It's written in React, Typescript, React Three Fiber, and hosted on Vercel - the full source code can be found on my Github, along with its 2D predecessor. Models are sourced from [poly.pizza](poly.pizza), and their individual attribution can be found in the info section at the top right. Keep scrolling for more!"
                 },
               ]} />
             </div>
             <div className="panel panel-empty">
-              <Info link="https://poly.pizza/m/doMMnviJrGi"/>
+              <Info link="https://poly.pizza/m/doMMnviJrGi" />
             </div>
           </div>
         </section>
@@ -83,7 +90,7 @@ function App() {
         <section>
           <div className="container">
             <div className="panel panel-empty">
-              <Info link="https://poly.pizza/m/4v0sRFH6PN9"/>
+              <Info link="https://poly.pizza/m/4v0sRFH6PN9" />
             </div>
             <div className="panel panel-text">
               <Card title="Education" elements={[
@@ -101,7 +108,7 @@ function App() {
               <Card title="Professional Experience" elements={[
                 {
                   name: "UI / UX Software Development Intern @ Reliable Robotics",
-                  subtitle: "Mountain View, CA | May - August 2026 | Upcoming!",
+                  subtitle: "Mountain View, CA | May - August 2026",
                   content: ""
                 },
                 {
@@ -117,7 +124,7 @@ function App() {
               ]} />
             </div>
             <div className="panel panel-empty">
-              <Info link="https://poly.pizza/m/a3XrQkLNna9"/>
+              <Info link="https://poly.pizza/m/a3XrQkLNna9" />
             </div>
           </div>
         </section>
@@ -125,12 +132,12 @@ function App() {
         <section >
           <div className="container">
             <div className="panel panel-empty">
-              <Info link="https://poly.pizza/m/66FnMJl5fs"/>
+              <Info link="https://poly.pizza/m/66FnMJl5fs" />
             </div>
             <div className="panel panel-text">
               <Card title="Project Highlights" elements={[
                 { name: "Mini Neural Network", subtitle: "C, + a little standard lib (too scared to rewrite malloc)", content: "Machine learning library built from scratch in pure C.", link: "https://github.com/dubitable/MiniNN" },
-                { name: "Flight Tracker", subtitle: "Remix Run, Amadeus / OpenSky API", content: "Live tracking and route info for flights (commercial/non-commercial).",  link: "https://github.com/dubitable/FlightTracker" },
+                { name: "Flight Tracker", subtitle: "Remix Run, Amadeus / OpenSky API", content: "Live tracking and route info for flights (commercial/non-commercial).", link: "https://github.com/dubitable/FlightTracker" },
                 { name: "Stock Ticker Tracker", subtitle: "React, Typescript, Docker, PostgreSQL, Slack API", content: "Slack-integrated tool suite for stock trend analysis. Proprietary, no link :(" },
                 { name: "Social Media Analytics", subtitle: "Next.js, Tensorflow, Vercel", content: "Sentiment analysis dashboard built for social media creator client.  Proprietary." }
               ]} />
@@ -142,19 +149,19 @@ function App() {
           <div className="container">
             <div className="panel panel-text">
               <Card title="Quick Links" elements={[
-                {name: "Links", content: "Thanks for looking through everything! This is a very condensed portrayal of myself, so check me out on [Github](https://github.com/dubitable), on [LinkedIn](https://www.linkedin.com/in/pierre-quereuil), or take a look at my [resume](https://docs.google.com/document/d/1thTzOxcV5SnmgqW7FAgDT1RiQYXXj_mMpNp-K4RIKvE/edit?usp=sharing)!. I don't generally use any other socials - any out there are probably severely outdated..."},
-                {name: "Contact Info", content: "Feel free to reach out at pierrequereuil@gmail.com for any inquiries, or just to ask me how my day is going. Try not to sign me up for any newsletters though."},
-                {name: "Not Gotten Enough of Me Yet?", content: "Unfortunately, that's where this website ends. Feel free to go back up to the top [here](/). Or head back in a few weeks and I might've added something cool in the meantime."}
+                { name: "Links", content: "Thanks for looking through everything! This is a very condensed portrayal of myself, so check me out on [Github](https://github.com/dubitable), on [LinkedIn](https://www.linkedin.com/in/pierre-quereuil), or take a look at my [resume](https://docs.google.com/document/d/1thTzOxcV5SnmgqW7FAgDT1RiQYXXj_mMpNp-K4RIKvE/edit?usp=sharing)!. I don't generally use any other socials - any out there are probably severely outdated..." },
+                { name: "Contact Info", content: "Feel free to reach out at pierrequereuil@gmail.com for any inquiries, or just to ask me how my day is going. Try not to sign me up for any newsletters though." },
+                { name: "Not Gotten Enough of Me Yet?", content: "Unfortunately, that's where this website ends. Feel free to go back up to the top [here](/). Or head back in a few weeks and I might've added something cool in the meantime." }
               ]} />
             </div>
             <div className="panel panel-empty">
-              <Info link="https://poly.pizza/m/ZaBVh3kaEy"/>
+              <Info link="https://poly.pizza/m/ZaBVh3kaEy" />
             </div>
           </div>
 
         </section>
       </div>
-    </>
+    </div>
 
   )
 }

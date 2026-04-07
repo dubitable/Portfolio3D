@@ -39,6 +39,6 @@ function Sign({ scroll }: { scroll: Scroll }) {
   )
 }
 
-useGLTF.preload(path);
+// useGLTF.preload(path);
 
 export default Sign;

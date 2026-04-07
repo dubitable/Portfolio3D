@@ -1,6 +1,7 @@
 function Info({ link }: { link: string }) {
   return (
     <a
+        className="info"
         href={link}
         target="_blank"
         style={{ height: "20px", width: "20px", color: "white"}}

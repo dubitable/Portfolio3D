@@ -33,6 +33,4 @@ function Cap({ scroll }: { scroll: Scroll }) {
   )
 }
 
-useGLTF.preload(path);
-
 export default Cap;
